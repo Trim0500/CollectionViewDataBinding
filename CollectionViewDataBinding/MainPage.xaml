@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectionViewDataBinding.MainPage">
+
+    <StackLayout>
+        <!--Step-01: Create the collection view inside the layout-->
+        <!--Step-03: Bind the collection view to the Fruits list in MainPage.xaml.ca, then add in a data template for the containing grid and the elements we wish to use-->
+        <CollectionView 
+            ItemsSource="{Binding Parties}"
+            SelectionMode="Single"
+            SelectionChanged="CollectionView_SelectionChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10"
+                          RowDefinitions="Auto, *"
+                          ColumnDefinitions="Auto, *">
+                        <Image Grid.RowSpan="2"
+                               Source="{Binding imageURL}"
+                               Aspect="AspectFill"
+                               HeightRequest="60"
+                               WidthRequest="60"
+                               />
+                        <Label Grid.Column="1"
+                               Text="{Binding name}"
+                               FontAttributes="Bold"
+                               />
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               Text="{Binding leader}"
+                               VerticalOptions="End"
+                               />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+
+</ContentPage>
